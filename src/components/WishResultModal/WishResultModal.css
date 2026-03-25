@@ -1,0 +1,121 @@
+.wish-result-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background:
+    radial-gradient(circle at top, rgba(255, 248, 244, 0.12), transparent 34%),
+    rgba(64, 51, 44, 0.22);
+  backdrop-filter: blur(16px);
+}
+
+.wish-result-modal__card {
+  position: relative;
+  width: min(100%, 420px);
+  padding: 28px 24px 24px;
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.82), transparent 44%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 248, 246, 0.8)),
+    rgba(255, 255, 255, 0.8);
+  box-shadow:
+    0 24px 72px rgba(84, 61, 51, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  transform-origin: center;
+  overflow: hidden;
+}
+
+.wish-result-modal__card::before {
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 54%;
+  content: "";
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.26), transparent);
+  pointer-events: none;
+}
+
+.wish-result-modal__eyebrow,
+.wish-result-modal__title,
+.wish-result-modal__message {
+  margin: 0;
+}
+
+.wish-result-modal__eyebrow {
+  font-size: 0.76rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(76, 64, 56, 0.56);
+}
+
+.wish-result-modal__title {
+  margin-top: 10px;
+  font-family: "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif;
+  font-size: 2rem;
+  line-height: 1.02;
+}
+
+.wish-result-modal__message {
+  margin-top: 16px;
+  line-height: 1.72;
+  color: rgba(76, 64, 56, 0.82);
+}
+
+.wish-result-modal__actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.wish-result-modal__button {
+  flex: 1;
+  min-height: 48px;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(213, 176, 181, 0.94), rgba(204, 163, 169, 0.88));
+  color: #fffaf7;
+  cursor: pointer;
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease,
+    background 160ms ease;
+  box-shadow: 0 12px 28px rgba(175, 141, 138, 0.14);
+}
+
+.wish-result-modal__button--ghost {
+  background: rgba(255, 255, 255, 0.74);
+  color: rgba(76, 64, 56, 0.9);
+  border: 1px solid rgba(213, 192, 185, 0.8);
+  box-shadow: none;
+}
+
+.wish-result-modal__button:not(:disabled):active {
+  transform: translateY(1px) scale(0.99);
+}
+
+.wish-result-modal__button:disabled {
+  opacity: 0.54;
+  cursor: default;
+}
+
+@media (max-width: 767px) {
+  .wish-result-modal {
+    padding: 16px;
+  }
+
+  .wish-result-modal__card {
+    padding: 26px 20px 20px;
+    border-radius: 24px;
+  }
+
+  .wish-result-modal__actions {
+    flex-direction: column;
+  }
+
+  .wish-result-modal__button {
+    min-height: 52px;
+  }
+}

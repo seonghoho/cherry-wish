@@ -1,0 +1,115 @@
+.cherry-page {
+  position: relative;
+  min-height: 100dvh;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.cherry-page__shell {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  min-height: 100dvh;
+  padding: 24px 18px 28px;
+  grid-template-rows: auto 1fr auto;
+  gap: 18px;
+}
+
+.cherry-page__hero {
+  display: grid;
+  gap: 12px;
+  justify-items: center;
+  text-align: center;
+  padding-top: max(12px, env(safe-area-inset-top));
+}
+
+.cherry-page__eyebrow {
+  margin: 0;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 0.74rem;
+  color: var(--text-secondary);
+}
+
+.cherry-page__title {
+  margin: 0;
+  font-family: "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif;
+  font-size: clamp(2.2rem, 8vw, 4.2rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 0.98;
+}
+
+.cherry-page__description {
+  margin: 0;
+  max-width: 28rem;
+  font-size: 0.98rem;
+  line-height: 1.62;
+  color: var(--text-secondary);
+}
+
+.cherry-page__main {
+  display: flex;
+  align-items: stretch;
+}
+
+.cherry-page__stage {
+  position: relative;
+  width: min(100%, 960px);
+  margin: 0 auto;
+  border: 1px solid var(--panel-border);
+  border-radius: 32px;
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.36), transparent 48%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.36), rgba(255, 255, 255, 0.08)),
+    var(--panel-surface);
+  box-shadow:
+    0 28px 70px rgba(145, 121, 96, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.44);
+  overflow: hidden;
+  backdrop-filter: blur(16px);
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.cherry-page__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: min(100%, 960px);
+  margin: 0 auto;
+  padding-bottom: max(4px, env(safe-area-inset-bottom));
+}
+
+.cherry-page__footer-copy {
+  margin: 0;
+  max-width: 34rem;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+@media (max-width: 767px) {
+  .cherry-page__shell {
+    padding: 18px 14px 20px;
+    gap: 14px;
+  }
+
+  .cherry-page__stage {
+    border-radius: 28px;
+  }
+
+  .cherry-page__footer {
+    align-items: flex-end;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .cherry-page__footer-copy {
+    width: 100%;
+    font-size: 0.92rem;
+  }
+}

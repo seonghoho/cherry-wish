@@ -1,0 +1,66 @@
+.spring-background {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.spring-background__glow {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(18px);
+  opacity: 0.54;
+}
+
+.spring-background__glow--left {
+  top: -12%;
+  left: -6%;
+  width: 44vw;
+  height: 44vw;
+  min-width: 240px;
+  min-height: 240px;
+  background: radial-gradient(circle, rgba(255, 247, 236, 0.74) 0%, rgba(255, 247, 236, 0) 72%);
+}
+
+.spring-background__glow--right {
+  right: -10%;
+  bottom: 6%;
+  width: 34vw;
+  height: 34vw;
+  min-width: 200px;
+  min-height: 200px;
+  background: radial-gradient(circle, rgba(241, 227, 224, 0.54) 0%, rgba(241, 227, 224, 0) 72%);
+}
+
+.spring-background__petal {
+  position: absolute;
+  top: -8%;
+  left: var(--petal-left);
+  width: 10px;
+  height: 16px;
+  border-radius: 70% 70% 70% 18%;
+  background: linear-gradient(180deg, rgba(246, 221, 224, 0.68), rgba(230, 190, 196, 0.34));
+  opacity: 0.42;
+  animation: ambientPetal var(--petal-duration) ease-in-out infinite;
+  animation-delay: var(--petal-delay);
+}
+
+@keyframes ambientPetal {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 0.4;
+  }
+
+  50% {
+    transform: translate3d(10px, 42vh, 0) rotate(16deg);
+  }
+
+  100% {
+    transform: translate3d(-8px, 94vh, 0) rotate(-10deg);
+    opacity: 0;
+  }
+}

@@ -1,0 +1,114 @@
+.wish-tree-scene {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.wish-tree-scene__host {
+  position: absolute;
+  inset: 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.wish-tree-scene__host canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: manipulation;
+  -webkit-user-drag: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.wish-tree-scene__canopy-button {
+  position: absolute;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-user-drag: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.wish-tree-scene__canopy-button::before {
+  position: absolute;
+  inset: 12% 8%;
+  content: "";
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  opacity: 0.78;
+  box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.04);
+  animation: canopyPulse 4.2s ease-in-out infinite;
+}
+
+.wish-tree-scene__canopy-button:disabled {
+  pointer-events: none;
+}
+
+.wish-tree-scene__canopy-button:disabled::before {
+  opacity: 0;
+}
+
+.wish-tree-scene__hint-shell {
+  position: absolute;
+  left: 50%;
+  bottom: 10%;
+  transform: translateX(-50%) translateY(8px);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 180ms ease-out,
+    transform 220ms ease-out;
+}
+
+.wish-tree-scene__hint-shell.is-visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.wish-tree-scene__hint {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+  padding: 0 16px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.52);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  color: rgba(76, 64, 56, 0.78);
+  font-size: 0.84rem;
+  white-space: nowrap;
+  box-shadow: 0 12px 24px rgba(125, 99, 85, 0.06);
+  backdrop-filter: blur(10px);
+}
+
+@keyframes canopyPulse {
+  0%,
+  100% {
+    transform: scale(0.985);
+    opacity: 0.24;
+  }
+
+  50% {
+    transform: scale(1.015);
+    opacity: 0.52;
+  }
+}
+
+@media (max-width: 767px) {
+  .wish-tree-scene__hint-shell {
+    bottom: 11%;
+  }
+
+  .wish-tree-scene__hint {
+    min-height: 42px;
+    padding: 0 14px;
+    font-size: 0.8rem;
+  }
+}

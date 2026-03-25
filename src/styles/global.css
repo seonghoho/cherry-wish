@@ -1,0 +1,57 @@
+:root {
+  color-scheme: light;
+  font-family: "Avenir Next", "Pretendard", "Noto Sans KR", sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  --page-bg-top: #f8f3ea;
+  --page-bg-middle: #edf5fb;
+  --page-bg-bottom: #f7eee7;
+  --text-primary: #4c4038;
+  --text-secondary: rgba(76, 64, 56, 0.74);
+  --panel-border: rgba(255, 255, 255, 0.7);
+  --panel-surface: rgba(255, 252, 249, 0.58);
+  --panel-shadow: 0 24px 60px rgba(145, 121, 96, 0.12);
+  --accent-blush: #dfa8ad;
+  --accent-branch: #835d4c;
+  --accent-sky: #daeaf8;
+  --button-surface: rgba(255, 255, 255, 0.8);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background:
+    radial-gradient(circle at top, rgba(255, 247, 238, 0.92), transparent 40%),
+    linear-gradient(
+      180deg,
+      var(--page-bg-top) 0%,
+      var(--page-bg-middle) 48%,
+      var(--page-bg-bottom) 100%
+    );
+  color: var(--text-primary);
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  color: inherit;
+}
+
+a {
+  color: inherit;
+}
