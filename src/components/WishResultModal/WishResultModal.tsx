@@ -1,10 +1,14 @@
 import { gsap } from 'gsap';
 import { useLayoutEffect, useRef } from 'react';
+import {
+  DEFAULT_AFFILIATE_DISCLOSURE,
+  type WishEntry,
+} from '../../constants/wishMessages';
 import './WishResultModal.css';
 
 type WishResultModalProps = {
   readonly isOpen: boolean;
-  readonly message: string;
+  readonly entry: WishEntry;
   readonly onReplay: () => void;
   readonly onShare: () => void;
   readonly isShareAvailable: boolean;
@@ -14,7 +18,7 @@ type WishResultModalProps = {
 
 export function WishResultModal({
   isOpen,
-  message,
+  entry,
   onReplay,
   onShare,
   isShareAvailable,
@@ -23,6 +27,7 @@ export function WishResultModal({
 }: WishResultModalProps) {
   const overlayRef = useRef<HTMLDivElement | null>(null);
   const cardRef = useRef<HTMLDivElement | null>(null);
+  const affiliateDisclosure = entry.affiliateDisclosure ?? DEFAULT_AFFILIATE_DISCLOSURE;
 
   useLayoutEffect(() => {
     if (!isOpen || !overlayRef.current || !cardRef.current) {
@@ -31,7 +36,7 @@ export function WishResultModal({
 
     const context = gsap.context(() => {
       const textNodes = cardRef.current?.querySelectorAll(
-        '.wish-result-modal__eyebrow, .wish-result-modal__title, .wish-result-modal__message, .wish-result-modal__actions',
+        '.wish-result-modal__title, .wish-result-modal__headline, .wish-result-modal__suggestion, .wish-result-modal__product, .wish-result-modal__cta, .wish-result-modal__actions, .wish-result-modal__disclosure',
       );
 
       gsap.fromTo(
@@ -101,11 +106,21 @@ export function WishResultModal({
       aria-labelledby="wish-title"
     >
       <div ref={cardRef} className="wish-result-modal__card">
-        <p className="wish-result-modal__eyebrow">Cherry Wish</p>
         <h2 id="wish-title" className="wish-result-modal__title">
           벚꽃을 잡았어요
         </h2>
-        <p className="wish-result-modal__message">{message}</p>
+        <p className="wish-result-modal__headline">{entry.headline}</p>
+        <p className="wish-result-modal__suggestion">{entry.suggestion}</p>
+        <p className="wish-result-modal__product">추천 아이템 · {entry.productLabel}</p>
+        <a
+          className="wish-result-modal__cta"
+          href={entry.productUrl}
+          target="_blank"
+          rel="noreferrer noopener"
+          aria-label={`${entry.productLabel} 링크를 새 탭에서 열기`}
+        >
+          {entry.ctaLabel}
+        </a>
         <div className="wish-result-modal__actions">
           <button type="button" className="wish-result-modal__button" onClick={onReplay}>
             다시 흔들기
@@ -119,6 +134,7 @@ export function WishResultModal({
             {shareLabel}
           </button>
         </div>
+        <p className="wish-result-modal__disclosure">{affiliateDisclosure}</p>
       </div>
     </div>
   );

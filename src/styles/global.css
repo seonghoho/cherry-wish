@@ -1,6 +1,13 @@
 :root {
   color-scheme: light;
-  font-family: "Avenir Next", "Pretendard", "Noto Sans KR", sans-serif;
+  font-family:
+    "Pretendard",
+    "Noto Sans KR",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Apple SD Gothic Neo",
+    "Segoe UI",
+    sans-serif;
   line-height: 1.5;
   font-weight: 400;
   --page-bg-top: #f8f3ea;
@@ -30,6 +37,7 @@ body,
 body {
   margin: 0;
   min-width: 320px;
+  font-family: inherit;
   background:
     radial-gradient(circle at top, rgba(255, 247, 238, 0.92), transparent 40%),
     linear-gradient(
@@ -39,6 +47,8 @@ body {
       var(--page-bg-bottom) 100%
     );
   color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 button,

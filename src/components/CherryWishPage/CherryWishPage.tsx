@@ -3,7 +3,10 @@ import {
   SCENE_CONFIG,
   type SceneState,
 } from '../../constants/sceneConfig';
-import { getRandomWishMessage } from '../../constants/wishMessages';
+import {
+  DEFAULT_SHARE_COPY,
+  getRandomWishEntry,
+} from '../../constants/wishMessages';
 import { useResponsiveConfig } from '../../hooks/useResponsiveConfig';
 import { useSound } from '../../hooks/useSound';
 import { InstructionOverlay } from '../InstructionOverlay/InstructionOverlay';
@@ -21,7 +24,7 @@ export function CherryWishPage() {
   const [dropSequence, setDropSequence] = useState(0);
   const [resetSequence, setResetSequence] = useState(0);
   const [playCount, setPlayCount] = useState(0);
-  const [wishMessage, setWishMessage] = useState<string>(() => getRandomWishMessage());
+  const [wishEntry, setWishEntry] = useState(() => getRandomWishEntry());
   const [isSharing, setIsSharing] = useState(false);
   const [shareLabel, setShareLabel] = useState('공유하기');
   const timeoutIdsRef = useRef<number[]>([]);
@@ -130,7 +133,7 @@ export function CherryWishPage() {
 
     clearTimers();
     void play('catch');
-    setWishMessage((currentMessage) => getRandomWishMessage(currentMessage));
+    setWishEntry((currentEntry) => getRandomWishEntry(currentEntry.id));
     setSceneState('petalCaught');
 
     scheduleStateTransition(() => {
@@ -148,7 +151,7 @@ export function CherryWishPage() {
   const handleShare = useCallback(async () => {
     const sharePayload = {
       title: '벚꽃 소원나무',
-      text: `${wishMessage} · Cherry Wish에서 오늘의 벚꽃 소원을 만나보세요.`,
+      text: DEFAULT_SHARE_COPY,
       url: window.location.href,
     };
 
@@ -177,7 +180,7 @@ export function CherryWishPage() {
     } finally {
       setIsSharing(false);
     }
-  }, [scheduleStateTransition, wishMessage]);
+  }, [scheduleStateTransition]);
 
   return (
     <div className="cherry-page">
@@ -185,7 +188,7 @@ export function CherryWishPage() {
 
       <div className="cherry-page__shell">
         <header className="cherry-page__hero">
-          <p className="cherry-page__eyebrow">Seasonal Interactive Event</p>
+          <p className="cherry-page__eyebrow">Cherry Blossom Wishing Tree</p>
           <h1 className="cherry-page__title">벚꽃 소원나무</h1>
           <p className="cherry-page__description">
             오늘의 봄 한 조각을 손끝으로 붙잡아 보세요.
@@ -223,7 +226,7 @@ export function CherryWishPage() {
 
       <WishResultModal
         isOpen={sceneState === 'resultOpen'}
-        message={wishMessage}
+        entry={wishEntry}
         onReplay={handleReplay}
         onShare={() => {
           void handleShare();

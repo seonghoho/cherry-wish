@@ -28,7 +28,8 @@ export const SCENE_CONFIG = {
     mobileBurstCount: 22,
     desktopCatchRadius: 33,
     mobileCatchRadius: 40,
-    backgroundPetalCount: 3,
+    desktopBackgroundPetalCount: 6,
+    mobileBackgroundPetalCount: 4,
     gravity: 0.013,
     drag: 0.997,
     driftStrength: 0.56,
@@ -59,7 +60,9 @@ export function getResponsiveSceneMetrics(viewportWidth: number): ResponsiveScen
     petalBurstCount: isMobile
       ? SCENE_CONFIG.petals.mobileBurstCount
       : SCENE_CONFIG.petals.desktopBurstCount,
-    backgroundPetalCount: SCENE_CONFIG.petals.backgroundPetalCount,
+    backgroundPetalCount: isMobile
+      ? SCENE_CONFIG.petals.mobileBackgroundPetalCount
+      : SCENE_CONFIG.petals.desktopBackgroundPetalCount,
     petalCatchRadius: isMobile
       ? SCENE_CONFIG.petals.mobileCatchRadius
       : SCENE_CONFIG.petals.desktopCatchRadius,

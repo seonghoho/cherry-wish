@@ -338,7 +338,7 @@ export function WishTreeScene({
             className={`wish-tree-scene__hint-shell${sceneState === 'idle' ? ' is-visible' : ''}`}
             aria-hidden={sceneState !== 'idle'}
           >
-            <span className="wish-tree-scene__hint">벚꽃을 살짝 흔들어 보세요</span>
+            {/* <span className="wish-tree-scene__hint">벚꽃을 살짝 흔들어 보세요</span> */}
           </div>
         </>
       ) : null}

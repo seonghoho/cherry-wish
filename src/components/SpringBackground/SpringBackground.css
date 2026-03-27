@@ -34,33 +34,53 @@
 
 .spring-background__petal {
   position: absolute;
-  top: -8%;
+  top: -12%;
   left: var(--petal-left);
-  width: 10px;
-  height: 16px;
+  width: var(--petal-size);
+  height: calc(var(--petal-size) * 1.7);
   border-radius: 70% 70% 70% 18%;
-  background: linear-gradient(180deg, rgba(246, 221, 224, 0.68), rgba(230, 190, 196, 0.34));
-  opacity: 0.42;
-  animation: ambientPetal var(--petal-duration) ease-in-out infinite;
+  background: linear-gradient(180deg, rgba(246, 221, 224, 0.72), rgba(230, 190, 196, 0.36));
+  opacity: var(--petal-opacity);
+  filter: blur(0.2px);
+  animation: ambientPetal var(--petal-duration) linear infinite;
   animation-delay: var(--petal-delay);
+}
+
+.spring-background__petal::before {
+  position: absolute;
+  inset: 16% 14% auto auto;
+  width: 34%;
+  height: 30%;
+  border-radius: 999px;
+  content: "";
+  background: rgba(255, 255, 255, 0.34);
 }
 
 @keyframes ambientPetal {
   0% {
-    transform: translate3d(0, 0, 0) rotate(0deg);
+    transform:
+      translate3d(0, -2vh, 0)
+      rotate(var(--petal-rotate-start))
+      scale(var(--petal-scale));
     opacity: 0;
   }
 
-  10% {
-    opacity: 0.4;
+  14% {
+    opacity: var(--petal-opacity);
   }
 
-  50% {
-    transform: translate3d(10px, 42vh, 0) rotate(16deg);
+  52% {
+    transform:
+      translate3d(calc(var(--petal-drift) * 0.58), 46vh, 0)
+      rotate(0deg)
+      scale(var(--petal-scale));
   }
 
   100% {
-    transform: translate3d(-8px, 94vh, 0) rotate(-10deg);
+    transform:
+      translate3d(var(--petal-drift), 104vh, 0)
+      rotate(var(--petal-rotate-end))
+      scale(calc(var(--petal-scale) * 1.02));
     opacity: 0;
   }
 }

@@ -5,7 +5,7 @@
   bottom: 18px;
   z-index: 3;
   display: grid;
-  gap: 4px;
+  gap: 6px;
   justify-items: center;
   text-align: center;
   pointer-events: none;
@@ -24,9 +24,11 @@
 }
 
 .instruction-overlay__copy {
-  max-width: 22rem;
-  font-size: 0.95rem;
-  color: rgba(76, 64, 56, 0.82);
+  max-width: 27rem;
+  font-size: 1.08rem;
+  font-weight: 500;
+  line-height: 1.58;
+  color: rgba(76, 64, 56, 0.84);
 }
 
 @media (max-width: 767px) {
@@ -34,5 +36,11 @@
     left: 12px;
     right: 12px;
     bottom: 14px;
+  }
+
+  .instruction-overlay__copy {
+    max-width: 21rem;
+    font-size: 1rem;
+    line-height: 1.54;
   }
 }
